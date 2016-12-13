@@ -1,4 +1,3 @@
-// array writing to file
 #include "stdafx.h"
 #include <conio.h>
 #include <stdio.h>
@@ -20,12 +19,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	unsigned int n; // number of structs
+	unsigned int n; 
 	char q;
 
-	crypto_soft *pSoft; // pointer to array
+	crypto_soft *pSoft; 
 	cout << "Amount of elements= ";
-	scanf("%d", &n); // Input amount of programms
+	scanf("%d", &n); 
 	crypto_soft cs[n];
 	for (unsigned int i = 0; i<n; ++i)
 	{
@@ -49,8 +48,6 @@ int main(int argc, char* argv[])
 
 
 	outfile.close();
-	//cout << " Tap q to exit " << endl;
-	//cin >> q;
 	_getch();
 	return 0;
 }
