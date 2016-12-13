@@ -27,17 +27,16 @@ struct List
 
 int main()
 {
-	unsigned int l = 0; ;
-
-	List *pF = 0; // list is empty
+	
+	List *pF = 0; 
 	List *p;
-	char r; // rule
+	char r; 
 	ofstream outfile;
 		outfile.open("MyProgramm2.txt");
 	FILE * pFile;
 	do {
 
-		++l;
+		
 		p = (List *)malloc(sizeof(List));
 
 		
