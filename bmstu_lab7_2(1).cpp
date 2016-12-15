@@ -1,53 +1,54 @@
+
 #include "stdafx.h"
-#include <conio.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <fstream>
 #include <iostream>
 
+using namespace std;
 
 struct crypto_soft
 {
 	char Devname[128];
+	char Algorythm[64];
 	char Version[64];
-	char Algorythm[128];
-	char License[64];
+	char Licence[64];
+
 };
 
-using namespace std;
 
 
-int main(int argc, char* argv[])
-{
-	unsigned int n; 
-	char q;
 
-	crypto_soft *pSoft; 
-	cout << "Amount of elements= ";
-	scanf("%d", &n); 
-	crypto_soft cs[n];
-	for (unsigned int i = 0; i<n; ++i)
+
+int main() {
+	crypto_soft *pSoft;
+
+	FILE *pF;
+	int n(0);
+
+
+	pF = fopen("C:\\Users\\DELL\\Documents\\Visual Studio 2015\\Projects\\bmstu_lab7_1\\MyProgramm2.txt", "r");
+	if (pF == 0)
 	{
-		cout << "Enter Developer :" << endl;
-		cin >> cs[i].Devname;
-		cout << "Enter Algorythm :" << endl;
-		cin >> cs[i].Algorythm;
-		cout << "Enter Version :" << endl;
-		cin >> cs[i].Version;
-		cout << "Enter Licence :" << endl;
-		cin >> cs[i].License;
+		printf("Error, file not found");
+		return 1;
 	}
+	
+	pSoft = new crypto_soft[n];
+	fread(&n, sizeof(int), 1, pF);
+	
+	fread(pSoft, sizeof(crypto_soft), n, pF);
+	fclose(pF);
 
 
-	ofstream outfile;
-	outfile.open("Programm.txt");
-	for (unsigned int i = 0; i < n; ++i)
+	for (unsigned int i = 0; i < n; ++i) 
 	{
-		outfile << cs[i].Devname << " " << cs[i].Algorythm << " " << cs[i].License << " " << cs[i].Version << endl;
+		cout << pSoft[i].Devname << " " << pSoft[i].Algorythm << " " << pSoft[i].Version << " " << pSoft[i].Licence << " "  << endl;
 	}
+	
 
 
-	outfile.close();
-	_getch();
 	return 0;
 }
+	
+
